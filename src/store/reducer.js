@@ -6,6 +6,7 @@ const initialState = {
     isTrigger: [], //for active default menu, set blank for horizontal
     ...config,
     isFullScreen: false, // static can't change
+    auth: JSON.parse(localStorage.getItem('token'))
 };
 
 const reducer = (state = initialState, action) => {
@@ -13,6 +14,11 @@ const reducer = (state = initialState, action) => {
     let open = [];
 
     switch (action.type) {
+        case actionTypes.AUTHENTICATION:
+            return {
+                ...state,
+                auth:action.auth
+            };
         case actionTypes.COLLAPSE_MENU:
             return {
                 ...state,

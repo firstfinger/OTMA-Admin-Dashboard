@@ -1,5 +1,5 @@
 import React, { Component, Suspense } from 'react';
-import { Switch, Route } from 'react-router-dom';
+import {BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
 import Loadable from 'react-loadable';
 
 import '../../node_modules/font-awesome/scss/font-awesome.scss';
@@ -8,6 +8,7 @@ import Loader from './layout/Loader'
 import Aux from "../hoc/_Aux";
 import ScrollToTop from './layout/ScrollToTop';
 import routes from "../route";
+import { connect } from "react-redux";
 
 const AdminLayout = Loadable({
     loader: () => import('./layout/AdminLayout'),
@@ -16,32 +17,43 @@ const AdminLayout = Loadable({
 
 class App extends Component {
     render() {
-        const menu = routes.map((route, index) => {
-          return (route.component) ? (
-              <Route
-                  key={index}
-                  path={route.path}
-                  exact={route.exact}
-                  name={route.name}
-                  render={props => (
-                      <route.component {...props} />
-                  )} />
-          ) : (null);
-        });
-
+        const Signin1 = React.lazy(() => import('../Demo/Authentication/SignIn/SignIn1'));
+        const NotFound = ()=>
+            (
+                <div>
+                  <h1>404 - Not Found!</h1>
+                 
+                </div>
+              )
+        
         return (
             <Aux>
-                <ScrollToTop>
-                    <Suspense fallback={<Loader/>}>
-                        <Switch>
-                            {menu}
-                            <Route path="/" component={AdminLayout} />
-                        </Switch>
-                    </Suspense>
-                </ScrollToTop>
+                {/* <ScrollToTop> */}
+                    <Router>
+                        <Suspense fallback={<Loader />}>
+                            <Switch>
+                                {
+                                    this.props.token ?
+                                        < Route path="/" component={AdminLayout} /> :
+                                        <>
+                                            <Route path="/login" component={Signin1} />
+                                            <Route component={NotFound} />
+                                            <Route exact path="/" render={() => (<Redirect from="*" to="/login" />)} />
+                                        </>
+                                }
+                            </Switch>
+                        </Suspense>
+                    </Router>
+                {/* </ScrollToTop> */}
             </Aux>
         );
     }
 }
 
-export default App;
+function mapStateToProps(state) {
+    return {
+        token: state.auth
+    }
+}
+
+export default connect(mapStateToProps)(App);

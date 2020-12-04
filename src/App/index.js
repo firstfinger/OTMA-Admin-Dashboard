@@ -17,7 +17,7 @@ const AdminLayout = Loadable({
 
 class App extends Component {
     render() {
-        const Signin1 = React.lazy(() => import('../Demo/Authentication/SignIn/SignIn1'));
+        const SignIn = React.lazy(() => import('../views/Authentication/SignIn.js'));
         const NotFound = ()=>
             (
                 <div>
@@ -36,9 +36,10 @@ class App extends Component {
                                     this.props.token ?
                                         < Route path="/" component={AdminLayout} /> :
                                         <>
-                                            <Route path="/login" component={Signin1} />
-                                            <Route component={NotFound} />
+                                            <Route path="/login" component={SignIn} />
+                                       
                                             <Route exact path="/" render={() => (<Redirect from="*" to="/login" />)} />
+                                                 {/* <Route component={NotFound} /> */}
                                         </>
                                 }
                             </Switch>

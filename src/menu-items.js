@@ -1,6 +1,51 @@
 export default {
     items: [
+
         {
+            id: 'navigation',
+            title: 'Navigation',
+            type: 'group',
+            icon: 'icon-navigation',
+            children: [
+                {
+                    id: 'dashboard',
+                    title: 'Dashboard',
+                    type: 'item',
+                    url: '/dashboard',
+                    icon: 'feather icon-home',
+                },
+                {
+                    id: 'associate',
+                    title: 'Associate',
+                    type: 'item',
+                    url: '/associate',
+                    icon: 'feather icon-box',
+                },
+                {
+                    id: 'committee',
+                    title: 'Committee',
+                    type: 'item',
+                    url: '/committee',
+                    icon: 'feather icon-user',
+                },
+                {
+                    id: 'tourGuide',
+                    title: 'Tour Guide',
+                    type: 'item',
+                    url: '/tourGuide',
+                    icon: 'feather icon-user',
+                },
+                {
+                    id: 'event',
+                    title: 'Event',
+                    type: 'item',
+                    url: '/event',
+                    icon: 'feather icon-user',
+                }
+            ]
+        },
+        
+       {
             id: 'navigation',
             title: 'Navigation',
             type: 'group',
@@ -14,7 +59,7 @@ export default {
                     icon: 'feather icon-home',
                 }
             ]
-        },
+        }, 
         {
             id: 'ui-element',
             title: 'UI ELEMENT',

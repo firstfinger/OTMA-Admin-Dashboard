@@ -25,9 +25,17 @@ const GoogleMap = React.lazy(() => import('./Demo/Maps/GoogleMap/index'));
 
 const OtherSamplePage = React.lazy(() => import('./Demo/Other/SamplePage'));
 const OtherDocs = React.lazy(() => import('./Demo/Other/Docs'));
+//
+
+const Dashboard = React.lazy(() => import('./views/Dashboard'));
+const Application = React.lazy(() => import('./views/Application'));
+const Associate = React.lazy(() => import('./views/Associate'));
+const Committee = React.lazy(() => import('./views/Committee'));
+const TourGuide = React.lazy(() => import('./views/TourGuide'));
 
 const routes = [
     { path: '/dashboard/default', exact: true, name: 'Default', component: DashboardDefault },
+
     { path: '/basic/button', exact: true, name: 'Basic Button', component: UIBasicButton },
     { path: '/basic/badges', exact: true, name: 'Basic Badges', component: UIBasicBadges },
     { path: '/basic/breadcrumb-paging', exact: true, name: 'Basic Breadcrumb Pagination', component: UIBasicBreadcrumbPagination },
@@ -40,6 +48,12 @@ const routes = [
     { path: '/maps/google-map', exact: true, name: 'Google Map', component: GoogleMap },
     { path: '/sample-page', exact: true, name: 'Sample Page', component: OtherSamplePage },
     { path: '/docs', exact: true, name: 'Documentation', component: OtherDocs },
+
+    { path: '/dashboard', exact: true, name: 'Default', component: Dashboard },
+    { path: '/application', exact: true, name: 'Default', component: Application },
+    { path: '/committee', exact: true, name: 'Default', component: Committee },
+    { path: '/associate', exact: true, name: 'Default', component: Associate },
+    { path: '/tourGuide', exact: true, name: 'Default', component: TourGuide },
 ];
 
 export default routes;

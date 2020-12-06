@@ -10,7 +10,7 @@ export function post(url, data) {
 
 export function get(url) {
     const token = JSON.parse(localStorage.getItem('token'));
-    return instance.get(base_url +rl, {
+    return instance.get(base_url +url, {
         headers: { 'Authorization': 'Bearer ' + token }
     })
 }

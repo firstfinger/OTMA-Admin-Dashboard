@@ -7,6 +7,7 @@ import App from './App/index';
 import * as serviceWorker from './serviceWorker';
 import reducer from './store/reducer';
 import config from './config';
+import 'antd/dist/antd.css';
 
 const store = createStore(reducer);
 
